@@ -1,0 +1,12 @@
+{
+  "name": "naive-tests",
+  "version": "1.0.2",
+  "description": "Javascript testing framework",
+  "main": "index.mjs",
+  "scripts": {
+    "pub": "npm publish --access public"
+  },
+  "author": "oikumo@gmail.com",
+  "license": "GPL-3.0-or-later",
+  "type": "module"
+}
