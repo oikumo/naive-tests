@@ -6,8 +6,9 @@ function Result(info, pass) {
 }
 
 const assert = function (original, expected, message) {
-    const info = message !== undefined ? message : `original: ${original} expected: ${expected}`
-    return new Result(info, false)
+    const info = `original: ${original} expected: ${expected}`
+    const equal = original === expected
+    return new Result(info, equal)
 }
 
 const test = (f, x, y) => {
