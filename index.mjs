@@ -1,20 +1,9 @@
-const results = []
+import { test } from './src/test.mjs'
+import * as assertions from './src/assertions.mjs'
+import { run } from './src/runner'
 
-function Result(info, pass) {
-    this.info = info
-    this.pass = pass
+export default {
+    test,
+    assertions,
+    run
 }
-
-const assert = function (original, expected, message) {
-    const info = `original: ${original} expected: ${expected}`
-    const equal = original === expected
-    return new Result(info, equal)
-}
-
-const test = (f, x, y) => {
-    const result = f(x, y)
-    results.push(result)
-    console.log(result)
-}
-
-export const equals = (x, y) => { test(assert, x, y) }
