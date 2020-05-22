@@ -1,9 +1,9 @@
 import { test } from './src/test.mjs'
-import * as assertions from './src/assertions.mjs'
-import { run } from './src/runner.mjs'
+import { equals } from './src/assertions.mjs'
+import { runTests } from './src/runner.mjs'
 
-export default {
+export {
     test,
-    assertions,
-    run
+    equals,
+    runTests
 }
