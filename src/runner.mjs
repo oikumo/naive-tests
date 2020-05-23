@@ -2,7 +2,7 @@ import * as fs from 'fs'
 import path from 'path'
 import { results } from './test.mjs'
 
-export const runTests = function (testPath) {
+export const runTests = function (testPath, cb) {
     results.len = 0
 
     const dirs = fs.readdirSync(testPath)
@@ -14,7 +14,9 @@ export const runTests = function (testPath) {
     })
 
     Promise.all(promises).then(() => {
-        console.log(results)
+        cb(null, results)
+    }).catch((err) => {
+        cb(err)
     })
 }
 
