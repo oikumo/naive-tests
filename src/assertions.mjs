@@ -5,3 +5,11 @@ export const equals = (original, expected) => {
         throw Error(info)
     }
 }
+
+export const notEquals = (original, expected) => {
+    const notequal = original !== expected
+    if (!notequal) {
+        const info = `original: ${original} expected: ${expected}`
+        throw Error(info)
+    }
+}
