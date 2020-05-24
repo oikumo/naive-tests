@@ -1,23 +1,24 @@
-import * as fs from 'fs'
-import path from 'path'
-import { results } from './test.mjs'
+import { findFilesInDirectories } from './utils.mjs'
+import { results, cleanResults } from './test.mjs'
 
-export const runTests = function (testPath, cb) {
-    results.len = 0
+export const runTests = async (testPath, cb) => {
+    cleanResults()
+    const files = findFilesInDirectories(new Set([testPath]))
 
-    const dirs = fs.readdirSync(testPath)
     const promises = []
-
-    dirs.forEach((dir) => {
-        const file = path.join(testPath, dir)
+    files.forEach((file) => {
         promises.push(import(file))
     })
 
-    Promise.all(promises).then(() => {
-        cb(null, results)
-    }).catch((err) => {
+    try {
+        await Promise.all(promises)
+    }
+    catch (err) {
         cb(err)
-    })
+        return
+    }
+
+    cb(null, results)
 }
 
 
