@@ -1,4 +1,5 @@
 export var results = []
+export const cleanResults = () => results.length = 0
 
 function Result(info, errors = []) {
     this.info = info
