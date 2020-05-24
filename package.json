@@ -1,10 +1,10 @@
 {
   "name": "naive-tests",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Javascript testing framework",
   "main": "index.mjs",
   "scripts": {
-    "test": "node example/run-example.mjs",
+    "test": "node run-all-tests.mjs",
     "pub": "npm publish --access public"
   },
   "author": "oikumo@gmail.com",
