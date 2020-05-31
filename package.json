@@ -1,6 +1,6 @@
 {
   "name": "naive-tests",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "Javascript testing framework",
   "main": "index.mjs",
   "scripts": {
