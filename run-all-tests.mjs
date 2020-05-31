@@ -1,2 +1,3 @@
-import { run } from './tests/runner-test.mjs'
-run()
+import { runnerTest } from './tests/runner-test.mjs'
+
+runnerTest()

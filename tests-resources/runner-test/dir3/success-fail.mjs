@@ -4,6 +4,6 @@ test('success test', () => {
     equals(1, 1, 'success!')
 })
 
-test('fail test', () => {
+test('failed test', () => {
     notEquals(1, 1, 'fail after pass!')
 })

@@ -1,11 +1,11 @@
 import { runTests } from '../src/runner.mjs'
 import path from 'path'
 
-export const run = function () {
+export const runnerTest = function () {
     const testsDir = path.join(process.cwd(), 'tests-resources/runner-test')
     runTests(testsDir, (err, results) => {
         if (err)
-            throw new Error('test runner import fails')
+            throw new Error(`test runner import fails, err: ${err}`)
 
         const summary = {
             pass: 0,
@@ -13,13 +13,19 @@ export const run = function () {
         }
 
         results.forEach((result) => {
-            if (result.errors.length > 0)
+            if (result.errors.length > 0) {
                 summary.fails++
+            }
             else
                 summary.pass++
         })
 
-        if (summary.fails != 2 || summary.pass != 2)
+        const mustSuccess = 3
+        const mustFail = 3
+
+        if (summary.fails != mustFail || summary.pass != mustSuccess)
             throw new Error('test runner results error')
+
+        console.log('runner-test test pass')
     })
 }

@@ -1,10 +1,19 @@
 import { test } from './src/test.mjs'
-import { equals, notEquals } from './src/assertions.mjs'
 import { runTests } from './src/runner.mjs'
+import {
+    equals, notEquals, objAreEquals, objAreNotEquals,
+    areNull, areNotNull, areUndefined, areNotUndefinedOrNull,
+} from './src/assertions.mjs'
 
 export {
     test,
     equals,
     notEquals,
+    objAreEquals,
+    objAreNotEquals,
+    areNull,
+    areNotNull,
+    areUndefined,
+    areNotUndefinedOrNull,
     runTests
 }
