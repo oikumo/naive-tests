@@ -1,3 +1,31 @@
+export const sameArrayElements = (expected, actual) => {
+    if (Object.getPrototypeOf(expected) !== Object.getPrototypeOf(actual)) {
+        const info = `prototypes doesn't match. expected proto: ${Object.getPrototypeOf(expected)} actual proto: ${Object.getPrototypeOf(actual)} `
+        throw new Error(info)
+    }
+
+    const differences = []
+    if (expected.length !== actual.length) {
+        const info = `length doesn't match. expected length: ${expected.length} actual: ${actual.length} `
+        throw new Error(info)
+    }
+    const actualLength = actual.length
+    for (let i = 0; i < actualLength; i++) {
+
+        if (expected[i] !== actual[i]) {
+            differences.push({ index: i, expected: expected[i], actual: actual[i] })
+        }
+    }
+
+    if (differences.length > 0) {
+        const info = `arrays doesn't match`
+        differences.forEach((diff) => {
+            info += `\nelement index: ${diff.index} expected: ${diff.expected} actual: ${diff.actual}`
+        })
+        throw new Error(info)
+    }
+}
+
 export const equals = (expected, actual) => {
     const equal = expected === actual
     if (!equal) {

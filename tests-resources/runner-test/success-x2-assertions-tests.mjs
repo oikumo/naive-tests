@@ -1,7 +1,7 @@
-import {
-    test, equals, notEquals, objAreEquals, objAreNotEquals,
-    areNull, areNotNull, areUndefined, areNotUndefinedOrNull
-} from '../../index.mjs'
+import { test, assertions } from '../../index.mjs'
+const { equals, notEquals, objAreEquals, objAreNotEquals,
+    areNull, areNotNull, areUndefined, areNotUndefinedOrNull,
+    sameArrayElements } = assertions
 
 test('success assertion test', () => {
     equals(1, 1)
@@ -18,6 +18,10 @@ test('success assertion test', () => {
     const o1 = { x: 1, c: '22' }
     const o2 = { x: 2 }
     objAreNotEquals(o1, o2)
+
+    sameArrayElements(new Uint32Array(4), new Uint32Array(4))
+    sameArrayElements([1, 2, 3], [1, 2, 3])
+
 })
 
 const shouldFail = (f) => {
@@ -56,5 +60,17 @@ test('success not assertion test', () => {
         const o1 = { x: 1, y: 3 }
         const o2 = { x: 1, y: 3 }
         objAreNotEquals(o1, o2)
+    })
+
+    shouldFail(() => {
+        sameArrayElements(new Uint32Array(4), new Uint16Array(4))
+    })
+
+    shouldFail(() => {
+        sameArrayElements([2, 's'], new Uint16Array(4))
+    })
+
+    shouldFail(() => {
+        sameArrayElements(undefined, null)
     })
 })
