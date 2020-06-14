@@ -1,7 +1,7 @@
 import { test, assertions } from '../../index.mjs'
 const { equals, notEquals, objAreEquals, objAreNotEquals,
     areNull, areNotNull, areUndefined, areNotUndefinedOrNull,
-    sameArrayElements } = assertions
+    sameArrayElements, noThrowsException } = assertions
 
 test('success assertion test', () => {
     equals(1, 1)
@@ -21,6 +21,7 @@ test('success assertion test', () => {
 
     sameArrayElements(new Uint32Array(4), new Uint32Array(4))
     sameArrayElements([1, 2, 3], [1, 2, 3])
+    noThrowsException(() => { })
 
 })
 
@@ -72,5 +73,11 @@ test('success not assertion test', () => {
 
     shouldFail(() => {
         sameArrayElements(undefined, null)
+    })
+
+    shouldFail(() => {
+        noThrowsException(() => {
+            throw Error('an error')
+        })
     })
 })

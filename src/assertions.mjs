@@ -106,3 +106,18 @@ export const areNotUndefinedOrNull = (actual, errorMessage) => {
         throw Error(info)
     }
 }
+
+export const noThrowsException = (f, errorMessage) => {
+    let errNotExpected = null
+    try {
+        f()
+    } catch (err) {
+        errNotExpected = err
+    }
+    if (errNotExpected !== null) {
+        let info = ''
+        if (errorMessage) info += `${errorMessage} \n`
+        info += `should have not throws an exception but it does: ${errNotExpected}`
+        throw Error(info)
+    }
+}
