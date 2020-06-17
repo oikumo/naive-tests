@@ -1,6 +1,6 @@
 {
   "name": "naive-tests",
-  "version": "1.0.16",
+  "version": "1.0.19",
   "description": "Javascript testing framework",
   "main": "index.mjs",
   "scripts": {
@@ -12,6 +12,10 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "https://github.com/oikumo/naive-tests.git"
-  }
+    "url": "git+https://github.com/oikumo/naive-tests.git"
+  },
+  "bugs": {
+    "url": "https://github.com/oikumo/naive-tests/issues"
+  },
+  "homepage": "https://github.com/oikumo/naive-tests#readme"
 }

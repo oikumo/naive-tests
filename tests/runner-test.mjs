@@ -23,8 +23,10 @@ export const runnerTest = function () {
         const mustSuccess = 3
         const mustFail = 3
 
-        if (summary.fails != mustFail || summary.pass != mustSuccess)
-            throw new Error('test runner results error')
+        if (summary.fails != mustFail || summary.pass != mustSuccess) {
+            console.error('tests with errors')
+            process.exit(1)
+        }
 
         console.log('runner-test test pass')
     })
