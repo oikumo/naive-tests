@@ -1,7 +1,18 @@
 import { test, assertions } from '../../index.mjs'
 const { equals, notEquals, objAreEquals, objAreNotEquals,
     areNull, areNotNull, areUndefined, areNotUndefinedOrNull,
-    sameArrayElements, noThrowsException } = assertions
+    sameArrayElements, sameArrayElementsOnly, noThrowsException, throwsException } = assertions
+
+const shouldFail = (f) => {
+    let errExpected = null
+    try {
+        f()
+    } catch (err) {
+        errExpected = err
+    }
+    if (errExpected === null)
+        throw new Error('test fail')
+}
 
 test('success assertion test', () => {
     equals(1, 1)
@@ -18,23 +29,17 @@ test('success assertion test', () => {
     const o1 = { x: 1, c: '22' }
     const o2 = { x: 2 }
     objAreNotEquals(o1, o2)
-
+    
+    noThrowsException(() => { })
+    throwsException(() => { throw Error() })
+    
     sameArrayElements(new Uint32Array(4), new Uint32Array(4))
     sameArrayElements([1, 2, 3], [1, 2, 3])
-    noThrowsException(() => { })
 
+    sameArrayElementsOnly([1, 1, 1, 1], new Uint32Array([1, 1, 1, 1]))
+    sameArrayElementsOnly(new Uint32Array([1,1,1,1]), [1,1,1,1])
 })
 
-const shouldFail = (f) => {
-    let errExpected = null
-    try {
-        f()
-    } catch (err) {
-        errExpected = err
-    }
-    if (errExpected === null)
-        throw new Error('test fail')
-}
 
 test('success not assertion test', () => {
     shouldFail(() => equals(2, 1))
@@ -79,5 +84,29 @@ test('success not assertion test', () => {
         noThrowsException(() => {
             throw Error('an error')
         })
+    })
+
+    shouldFail(() => {
+        throwsException(() => {            
+        })
+    })
+
+    shouldFail(() => { 
+        const arr = new Uint32Array([1,1,1,2])
+        sameArrayElementsOnly([1,1,1,1], arr)
+    })
+
+    shouldFail(() => { 
+        const arr = new Uint32Array([1,1,1,2])
+        sameArrayElementsOnly(arr, [1,1,1,1])
+    })
+
+    shouldFail(() => { 
+        const arr = new Uint32Array([1,1,1,2])
+        sameArrayElementsOnly(arr, null)
+    })
+
+    shouldFail(() => { 
+        sameArrayElementsOnly('s', undefined)
     })
 })

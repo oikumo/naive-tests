@@ -1,11 +1,4 @@
-export const sameArrayElements = (expected, actual, errorMessage) => {
-    if (Object.getPrototypeOf(expected) !== Object.getPrototypeOf(actual)) {
-        let info = ''
-        if (errorMessage) info += `${errorMessage} \n`
-        info += `prototypes doesn't match. expected proto: ${Object.getPrototypeOf(expected)} actual proto: ${Object.getPrototypeOf(actual)} `
-        throw new Error(info)
-    }
-
+const sameArray = (expected, actual, errorMessage) => {
     const differences = []
     if (expected.length !== actual.length) {
         let info = ''
@@ -29,6 +22,19 @@ export const sameArrayElements = (expected, actual, errorMessage) => {
         })
         throw new Error(info)
     }
+}
+export const sameArrayElementsOnly = (expected, actual, errorMessage) => {
+    sameArray(expected, actual, errorMessage)
+}
+
+export const sameArrayElements = (expected, actual, errorMessage) => {
+    if (Object.getPrototypeOf(expected) !== Object.getPrototypeOf(actual)) {
+        let info = ''
+        if (errorMessage) info += `${errorMessage} \n`
+        info += `prototypes doesn't match. expected proto: ${Object.getPrototypeOf(expected)} actual proto: ${Object.getPrototypeOf(actual)} `
+        throw new Error(info)
+    }
+    sameArray(expected, actual, errorMessage)
 }
 
 export const equals = (expected, actual, errorMessage) => {
@@ -118,6 +124,21 @@ export const noThrowsException = (f, errorMessage) => {
         let info = ''
         if (errorMessage) info += `${errorMessage} \n`
         info += `should have not throws an exception but it does: ${errNotExpected}`
+        throw Error(info)
+    }
+}
+
+export const throwsException = (f, errorMessage) => {
+    let errExpected = null
+    try {
+        f()
+    } catch (err) {
+        errExpected = err
+    }
+    if (errExpected === null) {
+        let info = ''
+        if (errorMessage) info += `${errorMessage} \n`
+        info += `should have throws an exception but it does not`
         throw Error(info)
     }
 }
