@@ -1,15 +1,15 @@
 {
+  "type": "module",
   "name": "naive-tests",
-  "version": "1.0.19",
+  "version": "1.1.1",
   "description": "Javascript testing framework",
-  "main": "index.mjs",
+  "main": "index.js",
   "scripts": {
-    "test": "node run-all-tests.mjs",
+    "test": "node run-all-tests.js",
     "pub": "npm publish --access public"
   },
   "author": "oikumo@gmail.com",
   "license": "GPL-3.0-or-later",
-  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/oikumo/naive-tests.git"
