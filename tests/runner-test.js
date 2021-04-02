@@ -1,4 +1,4 @@
-import { runTests } from '../src/runner.mjs'
+import { runTests } from '../src/runner.js'
 import path from 'path'
 
 export const runnerTest = function () {

@@ -1,4 +1,4 @@
-import { test, assertions } from '../../index.mjs'
+import { test, assertions } from '../../index.js'
 const { equals, notEquals, objAreEquals, objAreNotEquals,
     areNull, areNotNull, areUndefined, areNotUndefinedOrNull,
     sameArrayElements, sameArrayElementsOnly, noThrowsException, throwsException } = assertions
@@ -29,15 +29,15 @@ test('success assertion test', () => {
     const o1 = { x: 1, c: '22' }
     const o2 = { x: 2 }
     objAreNotEquals(o1, o2)
-    
+
     noThrowsException(() => { })
     throwsException(() => { throw Error() })
-    
+
     sameArrayElements(new Uint32Array(4), new Uint32Array(4))
     sameArrayElements([1, 2, 3], [1, 2, 3])
 
     sameArrayElementsOnly([1, 1, 1, 1], new Uint32Array([1, 1, 1, 1]))
-    sameArrayElementsOnly(new Uint32Array([1,1,1,1]), [1,1,1,1])
+    sameArrayElementsOnly(new Uint32Array([1, 1, 1, 1]), [1, 1, 1, 1])
 })
 
 
@@ -87,26 +87,26 @@ test('success not assertion test', () => {
     })
 
     shouldFail(() => {
-        throwsException(() => {            
+        throwsException(() => {
         })
     })
 
-    shouldFail(() => { 
-        const arr = new Uint32Array([1,1,1,2])
-        sameArrayElementsOnly([1,1,1,1], arr)
+    shouldFail(() => {
+        const arr = new Uint32Array([1, 1, 1, 2])
+        sameArrayElementsOnly([1, 1, 1, 1], arr)
     })
 
-    shouldFail(() => { 
-        const arr = new Uint32Array([1,1,1,2])
-        sameArrayElementsOnly(arr, [1,1,1,1])
+    shouldFail(() => {
+        const arr = new Uint32Array([1, 1, 1, 2])
+        sameArrayElementsOnly(arr, [1, 1, 1, 1])
     })
 
-    shouldFail(() => { 
-        const arr = new Uint32Array([1,1,1,2])
+    shouldFail(() => {
+        const arr = new Uint32Array([1, 1, 1, 2])
         sameArrayElementsOnly(arr, null)
     })
 
-    shouldFail(() => { 
+    shouldFail(() => {
         sameArrayElementsOnly('s', undefined)
     })
 })

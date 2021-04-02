@@ -3,9 +3,9 @@
   "type": "module",
   "version": "1.0.19",
   "description": "Javascript testing framework",
-  "main": "index.mjs",
+  "main": "index.js",
   "scripts": {
-    "test": "node run-all-tests.mjs",
+    "test": "node run-all-tests.js",
     "pub": "npm publish --access public"
   },
   "author": "oikumo@gmail.com",

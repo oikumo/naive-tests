@@ -1,6 +1,6 @@
-import { test } from './src/test.mjs'
-import { runTests } from './src/runner.mjs'
-import * as assertions from './src/assertions.mjs'
+import { test } from './src/test.js'
+import { runTests } from './src/runner.js'
+import * as assertions from './src/assertions.js'
 
 export {
     test,

@@ -1,4 +1,4 @@
-import { test, equals, notEquals } from '../../../index.mjs'
+import { test, equals, notEquals } from '../../../index.js'
 
 test('failing test', () => {
     equals(1, 2, 'fail')

@@ -1,4 +1,4 @@
-import { test, assertions } from '../../../index.mjs'
+import { test, assertions } from '../../../index.js'
 const { equals, notEquals } = assertions
 
 test('success test', () => {

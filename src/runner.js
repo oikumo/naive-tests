@@ -1,5 +1,5 @@
-import { findFilesInDirectories } from './utils.mjs'
-import { results, cleanResults } from './test.mjs'
+import { findFilesInDirectories } from './utils.js'
+import { results, cleanResults } from './test.js'
 
 export const runTests = async (testPath, cb) => {
     cleanResults()
