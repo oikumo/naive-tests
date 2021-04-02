@@ -1,10 +1,9 @@
 import { test } from './src/test.mjs'
-import { equals, notEquals } from './src/assertions.mjs'
 import { runTests } from './src/runner.mjs'
+import * as assertions from './src/assertions.mjs'
 
 export {
     test,
-    equals,
-    notEquals,
+    assertions,
     runTests
 }
