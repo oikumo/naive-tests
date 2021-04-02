@@ -1,25 +1,25 @@
-import { findFilesInDirectories } from './utils.js'
-import { results, cleanResults } from './test.js'
+import { findFilesInDirectories } from './utils.js';
+import { results, cleanResults } from './test.js';
 
 export const runTests = async (testPath, cb) => {
-    cleanResults()
-    const files = findFilesInDirectories(new Set([testPath]))
+    cleanResults();
+    const files = findFilesInDirectories(new Set([testPath]));
 
-    const promises = []
+    const promises = [];
     files.forEach((file) => {
-        promises.push(import(file))
-    })
+        promises.push(import(file));
+    });
 
     try {
-        await Promise.all(promises)
+        await Promise.all(promises);
     }
     catch (err) {
-        cb(err)
-        return
+        cb(err);
+        return;
     }
 
-    cb(null, results)
-}
+    cb(null, results);
+};
 
 
 

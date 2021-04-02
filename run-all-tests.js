@@ -1,3 +1,3 @@
-import { runnerTest } from './tests/runner-test.js'
+import { runnerTest } from './tests/runner-test.js';
 
 runnerTest();
