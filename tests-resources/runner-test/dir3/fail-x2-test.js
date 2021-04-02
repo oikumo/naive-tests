@@ -1,6 +1,8 @@
 import { test, assertions } from '../../../index.js'
 const { equals, notEquals } = assertions
 
+console.log(assertions);
+
 test('failed test', () => {
     equals(1, 2, 'fail')
     equals(1, 2, 'fail')

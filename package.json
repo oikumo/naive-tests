@@ -1,6 +1,6 @@
 {
-  "name": "naive-tests",
   "type": "module",
+  "name": "naive-tests",
   "version": "1.0.19",
   "description": "Javascript testing framework",
   "main": "index.js",

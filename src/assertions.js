@@ -1,4 +1,4 @@
-const sameArray = (expected, actual, errorMessage) => {
+export function sameArray(expected, actual, errorMessage) {
     const differences = []
     if (expected.length !== actual.length) {
         let info = ''
@@ -19,15 +19,16 @@ const sameArray = (expected, actual, errorMessage) => {
         info += `arrays doesn't match`
         differences.forEach((diff) => {
             info += `\nelement index: ${diff.index} expected: ${diff.expected} actual: ${diff.actual}`
-        })
-        throw new Error(info)
+        });
+        throw new Error(info);
     }
 }
-export const sameArrayElementsOnly = (expected, actual, errorMessage) => {
+
+export function sameArrayElementsOnly(expected, actual, errorMessage) {
     sameArray(expected, actual, errorMessage)
 }
 
-export const sameArrayElements = (expected, actual, errorMessage) => {
+export function sameArrayElements(expected, actual, errorMessage) {
     if (Object.getPrototypeOf(expected) !== Object.getPrototypeOf(actual)) {
         let info = ''
         if (errorMessage) info += `${errorMessage} \n`
@@ -47,7 +48,7 @@ export const equals = (expected, actual, errorMessage) => {
     }
 }
 
-export const notEquals = (expected, actual, errorMessage) => {
+export function notEquals(expected, actual, errorMessage) {
     const notequal = expected !== actual
     if (!notequal) {
         let info = ''
@@ -57,7 +58,7 @@ export const notEquals = (expected, actual, errorMessage) => {
     }
 }
 
-export const objAreEquals = (expected, actual, errorMessage) => {
+export function objAreEquals(expected, actual, errorMessage) {
     const equal = JSON.stringify(expected) === JSON.stringify(actual)
     if (!equal) {
         let info = ''
@@ -67,7 +68,7 @@ export const objAreEquals = (expected, actual, errorMessage) => {
     }
 }
 
-export const objAreNotEquals = (expected, actual, errorMessage) => {
+export function objAreNotEquals(expected, actual, errorMessage) {
     const equal = JSON.stringify(expected) === JSON.stringify(actual)
     if (equal) {
         let info = ''
@@ -77,7 +78,7 @@ export const objAreNotEquals = (expected, actual, errorMessage) => {
     }
 }
 
-export const areNull = (actual, errorMessage) => {
+export function areNull(actual, errorMessage) {
     if (actual !== null) {
         let info = ''
         if (errorMessage) info += `${errorMessage} \n`
@@ -86,7 +87,7 @@ export const areNull = (actual, errorMessage) => {
     }
 }
 
-export const areNotNull = (actual, errorMessage) => {
+export function areNotNull(actual, errorMessage) {
     if (actual === null) {
         let info = ''
         if (errorMessage) info += `${errorMessage} \n`
@@ -95,7 +96,7 @@ export const areNotNull = (actual, errorMessage) => {
     }
 }
 
-export const areUndefined = (actual, errorMessage) => {
+export function areUndefined(actual, errorMessage) {
     if (actual !== undefined) {
         let info = ''
         if (errorMessage) info += `${errorMessage} \n`
@@ -104,7 +105,7 @@ export const areUndefined = (actual, errorMessage) => {
     }
 }
 
-export const areNotUndefinedOrNull = (actual, errorMessage) => {
+export function areNotUndefinedOrNull(actual, errorMessage) {
     if (actual === undefined || actual === null) {
         let info = ''
         if (errorMessage) info += `${errorMessage} \n`
@@ -113,7 +114,7 @@ export const areNotUndefinedOrNull = (actual, errorMessage) => {
     }
 }
 
-export const noThrowsException = (f, errorMessage) => {
+export function noThrowsException(f, errorMessage) {
     let errNotExpected = null
     try {
         f()
@@ -128,7 +129,7 @@ export const noThrowsException = (f, errorMessage) => {
     }
 }
 
-export const throwsException = (f, errorMessage) => {
+export function throwsException(f, errorMessage) {
     let errExpected = null
     try {
         f()
