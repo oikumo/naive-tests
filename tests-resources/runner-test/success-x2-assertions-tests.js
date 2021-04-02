@@ -1,7 +1,7 @@
-import { test, assertions } from '../../index.js'
+import { test, assertions } from '../../index.js';
 const { equals, notEquals, objAreEquals, objAreNotEquals,
     areNull, areNotNull, areUndefined, areNotUndefinedOrNull,
-    sameArrayElements, sameArrayElementsOnly, noThrowsException, throwsException } = assertions
+    sameArrayElements, sameArrayElementsOnly, noThrowsException, throwsException } = assertions;
 
 const shouldFail = (f) => {
     let errExpected = null
@@ -38,8 +38,7 @@ test('success assertion test', () => {
 
     sameArrayElementsOnly([1, 1, 1, 1], new Uint32Array([1, 1, 1, 1]))
     sameArrayElementsOnly(new Uint32Array([1, 1, 1, 1]), [1, 1, 1, 1])
-})
-
+});
 
 test('success not assertion test', () => {
     shouldFail(() => equals(2, 1))
@@ -109,4 +108,4 @@ test('success not assertion test', () => {
     shouldFail(() => {
         sameArrayElementsOnly('s', undefined)
     })
-})
+});

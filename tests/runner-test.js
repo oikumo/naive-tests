@@ -23,9 +23,10 @@ export const runnerTest = function () {
         const mustSuccess = 3
         const mustFail = 3
 
-        if (summary.fails != mustFail || summary.pass != mustSuccess) {
-            console.error('tests with errors')
-            process.exit(1)
+        if (summary.fails !== mustFail || summary.pass !== mustSuccess) {
+            console.log(results.filter((result) => { return result.errors.length === 0; }));
+            console.error('tests with errors');
+            process.exit(1);
         }
 
         console.log('runner-test test pass')

@@ -1,5 +1,5 @@
-import { test, assertions } from '../../../index.js'
-const { equals, notEquals } = assertions
+import { test, assertions } from '../../../index.js';
+const { equals, notEquals } = assertions;
 
 console.log(assertions);
 
