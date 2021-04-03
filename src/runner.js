@@ -20,6 +20,3 @@ export const runTests = async (testPath, cb) => {
 
     cb(null, results);
 };
-
-
-
