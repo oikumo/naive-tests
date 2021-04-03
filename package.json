@@ -1,7 +1,7 @@
 {
   "type": "module",
   "name": "naive-tests",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Javascript testing framework",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "pub": "npm publish --access public"
   },
   "author": "oikumo@gmail.com",
-  "license": "GPL-3.0-or-later",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/oikumo/naive-tests.git"
