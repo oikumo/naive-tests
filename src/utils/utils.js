@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import path from 'path';
 
-const findFilesInDirectories = function (dirsPath) {
+export function findFilesInDirectories(dirsPath) {
     let files = new Set();
     let dirs = dirsPath;
 
@@ -15,9 +15,9 @@ const findFilesInDirectories = function (dirsPath) {
         dirs = foundSubDirs;
     }
     return files;
-};
+}
 
-const scan = (dir) => {
+export function scan(dir) {
     const directories = new Set();
     const files = new Set();
     fs.readdirSync(dir).forEach((item) => {
@@ -29,9 +29,29 @@ const scan = (dir) => {
             files.add(itemPath);
     });
     return [directories, files];
-};
+}
 
-export {
-    findFilesInDirectories,
-    scan
-};
+export function shouldFail(testFunction, params) {
+    if (!testFunction || typeof testFunction !== 'function') {
+        throw new Error("Function expected");
+    }
+
+    let p = params;
+
+    if (p === null) {
+        p = [null];
+    } else if (p === undefined) {
+        p = [undefined];
+    } else if (!Array.isArray(p)) {
+        p = [p];
+    }
+
+    let errExpected = null;
+    try {
+        testFunction.apply(null, p);
+    } catch (err) {
+        errExpected = err;
+    }
+    if (errExpected === null)
+        throw new Error('Error expected');
+}
