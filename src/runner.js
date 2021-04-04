@@ -1,4 +1,4 @@
-import { findFilesInDirectories } from './utils.js';
+import { findFilesInDirectories } from './utils/utils.js';
 import { results, cleanResults } from './test.js';
 
 export const runTests = async (testPath, cb) => {

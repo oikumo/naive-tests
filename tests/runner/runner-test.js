@@ -1,8 +1,8 @@
-import { runTests } from '../src/runner.js';
+import { runTests } from '../../src/runner.js';
 import path from 'path';
 
 export const runnerTest = function () {
-    const testsDir = path.join(process.cwd(), 'tests-resources/runner-test');
+    const testsDir = path.join(process.cwd(), 'tests/runner/runner-test-directory');
     runTests(testsDir, (err, results) => {
         if (err)
             throw new Error(`test runner import fails, err: ${err}`);
