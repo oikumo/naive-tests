@@ -1,6 +1,16 @@
 import * as fs from 'fs';
 import path from 'path';
 
+function isJSFile(filename) {
+    if (filename === undefined || filename === null) return false;
+    
+    const length = filename.length;
+    if (filename.endsWith('.mjs') && length > 4) return true;
+    if (filename.endsWith('.js') && length > 3) return true;
+
+    return false;
+}
+
 export function findFilesInDirectories(dirsPath) {
     let files = new Set();
     let dirs = dirsPath;
@@ -23,10 +33,14 @@ export function scan(dir) {
     fs.readdirSync(dir).forEach((item) => {
         const itemPath = path.join(dir, item);
         const stats = fs.statSync(itemPath);
-        if (stats.isDirectory())
-            directories.add(itemPath);
-        else
+
+        if (stats.isDirectory()) {
+            if (!itemPath.startsWith('.'))    
+                directories.add(itemPath);
+            
+        } else if (isJSFile(itemPath)) {
             files.add(itemPath);
+        }
     });
     return [directories, files];
 }
