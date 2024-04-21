@@ -1,4 +1,4 @@
-export function areNull(actual, errorMessage) {
+export function isNull(actual, errorMessage) {
     if (actual !== null) {
         let info = '';
         if (errorMessage) info += `${errorMessage} \n`;
@@ -7,7 +7,7 @@ export function areNull(actual, errorMessage) {
     }
 }
 
-export function areNotNull(actual, errorMessage) {
+export function notNull(actual, errorMessage) {
     if (actual === null) {
         let info = '';
         if (errorMessage) info += `${errorMessage} \n`;
