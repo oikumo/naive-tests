@@ -30,7 +30,7 @@ export function sameArrayElementsOnly(expected, actual, errorMessage) {
     sameArray(expected, actual, errorMessage);
 }
 
-export function sameArrayElements(expected, actual, errorMessage) {
+export function equalsArrayElements(expected, actual, errorMessage) {
     if (Object.getPrototypeOf(expected) !== Object.getPrototypeOf(actual)) {
         let info = '';
         if (errorMessage) info += `${errorMessage} \n`;
