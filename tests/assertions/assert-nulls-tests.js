@@ -3,7 +3,7 @@ import { shouldFail } from "../../src/utils/utils.js";
 
 export function assertNullsTest() {
     isNull(null);
-    notNull(null);
+    notNull(1);
     areUndefined(undefined);
     areNotUndefinedOrNull(1);
 
