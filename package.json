@@ -1,7 +1,7 @@
 {
   "type": "module",
   "name": "naive-tests",
-  "version": "1.1.5",
+  "version": "1.1.7",
   "description": "Javascript testing framework",
   "main": "index.js",
   "scripts": {
